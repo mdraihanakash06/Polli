@@ -27,7 +27,6 @@
             line-height: 1.6;
         }
 
-        /* ===== VARIABLES (ডাইনামিক হবে) ===== */
         :root {
             --primary: #059669;
             --primary-dark: #047857;
@@ -52,7 +51,6 @@
             padding: 0 20px;
         }
 
-        /* ===== NAVIGATION ===== */
         .nav {
             position: fixed;
             top: 0;
@@ -146,7 +144,6 @@
             transform: translateY(-2px);
         }
 
-        /* ===== HERO SECTION ===== */
         .hero {
             position: relative;
             background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, var(--primary) 100%);
@@ -281,7 +278,6 @@
             height: 60px;
         }
 
-        /* ===== WHY US SECTION ===== */
         .why-section {
             background: #f8fafc;
             padding: 70px 0 50px;
@@ -324,7 +320,6 @@
             line-height: 1.6;
         }
 
-        /* ===== COURSES SECTION ===== */
         .courses-section {
             padding: 70px 0;
             background: var(--white);
@@ -364,7 +359,6 @@
             gap: 24px;
         }
 
-        /* ===== COURSE CARD ===== */
         .course-card {
             background: var(--white);
             border: 1px solid var(--border);
@@ -473,7 +467,6 @@
             transform: scale(1.02);
         }
 
-        /* ===== TESTIMONIALS ===== */
         .testimonials-section {
             background: linear-gradient(135deg, #f0fdf4, #f8fafc);
             padding: 70px 0;
@@ -543,7 +536,6 @@
             color: var(--text-3);
         }
 
-        /* ===== CONTACT ===== */
         .contact-section {
             padding: 70px 0;
             background: var(--white);
@@ -620,7 +612,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* ===== FOOTER ===== */
         .footer {
             background: #0f172a;
             padding: 48px 0 32px;
@@ -640,7 +631,6 @@
             color: #64748b;
         }
 
-        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -960,7 +950,6 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <div class="nav-logo">
@@ -977,7 +966,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero" id="heroSection">
         <div class="hero-bg"></div>
         <div class="container hero-content">
@@ -1002,7 +990,6 @@
         </div>
     </section>
 
-    <!-- WHY US SECTION -->
     <section class="why-section">
         <div class="container">
             <div class="why-grid">
@@ -1014,7 +1001,6 @@
         </div>
     </section>
 
-    <!-- COURSES SECTION -->
     <section class="courses-section" id="courses">
         <div class="container">
             <div class="section-header">
@@ -1026,7 +1012,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
@@ -1041,7 +1026,6 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-box">
@@ -1063,7 +1047,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-logo">
@@ -1077,7 +1060,6 @@
         </div>
     </footer>
 
-    <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
@@ -1105,15 +1087,6 @@
                     <div class="fg">
                         <label>ঠিকানা <span class="req">*</span></label>
                         <input type="text" id="fAddress" placeholder="জেলা / উপজেলা / গ্রাম">
-                    </div>
-                    <div class="fg">
-                        <label>মেয়াদ নির্বাচন <span class="req">*</span></label>
-                        <select id="fDuration">
-                            <option value="">— মেয়াদ বেছে নিন —</option>
-                            <option value="৩ মাস">৩ মাস</option>
-                            <option value="৬ মাস">৬ মাস</option>
-                            <option value="১ বছর">১ বছর</option>
-                        </select>
                     </div>
                     <div class="fg">
                         <label>কোনো প্রশ্ন (ঐচ্ছিক)</label>
@@ -1288,7 +1261,7 @@
             
             let planOptions = '';
             if (c.plans && c.plans.length > 0) {
-                planOptions = c.plans.map((plan, idx) => `<option value="${idx}">${plan.duration} — ${plan.price}</option>`).join('');
+                planOptions = c.plans.map((plan, idx) => `<option value="${idx}" data-price="${plan.price}">${plan.duration} — ${plan.price}</option>`).join('');
             }
             
             const planSelectorHtml = `<div class="plan-selector"><label><i class="fas fa-calendar-alt"></i> মেয়াদ নির্বাচন করুন <span class="req">*</span></label><select class="plan-dropdown" id="planDropdown"><option value="">— মেয়াদ বেছে নিন —</option>${planOptions}</select><div class="price-highlight" id="selectedPriceDisplay">নির্বাচিত মূল্য: ---</div></div>`;
@@ -1304,8 +1277,6 @@
             if (fPhone) fPhone.value = '';
             const fAddress = document.getElementById('fAddress');
             if (fAddress) fAddress.value = '';
-            const fDuration = document.getElementById('fDuration');
-            if (fDuration) fDuration.value = '';
             const fMessage = document.getElementById('fMessage');
             if (fMessage) fMessage.value = '';
             
@@ -1358,33 +1329,34 @@
             const name = document.getElementById('fName')?.value.trim();
             const phone = document.getElementById('fPhone')?.value.trim();
             const address = document.getElementById('fAddress')?.value.trim();
-            const duration = document.getElementById('fDuration')?.value;
             const message = document.getElementById('fMessage')?.value.trim();
             const planDropdown = document.getElementById('planDropdown');
             
             let selectedPlanText = "";
+            let selectedPrice = "";
             if (planDropdown && planDropdown.selectedIndex > 0) {
                 selectedPlanText = planDropdown.options[planDropdown.selectedIndex]?.text || "";
+                const selectedOption = planDropdown.options[planDropdown.selectedIndex];
+                selectedPrice = selectedOption?.getAttribute('data-price') || "";
             }
             
             if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন'); return; }
             if (!phone || phone.length < 10) { alert('সঠিক ফোন নম্বর দিন'); return; }
             if (!address) { alert('অনুগ্রহ করে আপনার ঠিকানা দিন'); return; }
-            
+            if (!selectedPlanText) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
             if (!currentSelectedCourse) { alert('কোর্স তথ্য পাওয়া যায়নি'); return; }
             
             const btn = this;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
             btn.disabled = true;
             
-            const finalDuration = duration || selectedPlanText;
-            
             const payload = {
                 name: name,
                 phone: phone,
                 address: address,
                 course: currentSelectedCourse.name,
-                duration: finalDuration,
+                duration: selectedPlanText,
+                price: selectedPrice,
                 message: message,
                 timestamp: new Date().toLocaleString('bn-BD')
             };
