@@ -409,7 +409,7 @@ function submitForm() {
     localStorage.setItem('palli_applications', JSON.stringify(allApplications));
     
     // গুগল শীটে পাঠান
-    if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbwh9qZ_R0PYSOlO4JXIcKsgcrJrr6YJ6-0KodY6a2EYekgwMkebjfNG2xaBcHHCYuNy6g/exec") {
+    if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/AKfycby_kO-bh6F0aCEnv1ObBBvIJzn-munFV7vpTl3fXz9VDzK5fQcPOVyRwxGecUHcfqxHOg/exec") {
         fetch(SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
