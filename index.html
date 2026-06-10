@@ -27,6 +27,7 @@
             line-height: 1.6;
         }
 
+        /* ===== VARIABLES (ডাইনামিক হবে) ===== */
         :root {
             --primary: #059669;
             --primary-dark: #047857;
@@ -51,6 +52,7 @@
             padding: 0 20px;
         }
 
+        /* ===== NAVIGATION ===== */
         .nav {
             position: fixed;
             top: 0;
@@ -144,6 +146,7 @@
             transform: translateY(-2px);
         }
 
+        /* ===== HERO SECTION ===== */
         .hero {
             position: relative;
             background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, var(--primary) 100%);
@@ -278,6 +281,7 @@
             height: 60px;
         }
 
+        /* ===== WHY US SECTION ===== */
         .why-section {
             background: #f8fafc;
             padding: 70px 0 50px;
@@ -320,6 +324,7 @@
             line-height: 1.6;
         }
 
+        /* ===== COURSES SECTION ===== */
         .courses-section {
             padding: 70px 0;
             background: var(--white);
@@ -359,6 +364,7 @@
             gap: 24px;
         }
 
+        /* ===== COURSE CARD ===== */
         .course-card {
             background: var(--white);
             border: 1px solid var(--border);
@@ -467,6 +473,7 @@
             transform: scale(1.02);
         }
 
+        /* ===== TESTIMONIALS ===== */
         .testimonials-section {
             background: linear-gradient(135deg, #f0fdf4, #f8fafc);
             padding: 70px 0;
@@ -536,6 +543,7 @@
             color: var(--text-3);
         }
 
+        /* ===== CONTACT ===== */
         .contact-section {
             padding: 70px 0;
             background: var(--white);
@@ -612,6 +620,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
+        /* ===== FOOTER ===== */
         .footer {
             background: #0f172a;
             padding: 48px 0 32px;
@@ -631,6 +640,7 @@
             color: #64748b;
         }
 
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -751,6 +761,42 @@
         .md-stat span {
             font-size: 14px;
             font-weight: 600;
+        }
+
+        .plan-selector {
+            margin: 16px 0;
+        }
+
+        .plan-selector label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .plan-dropdown {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .plan-dropdown:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .price-highlight {
+            background: var(--primary-light);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .md-topics {
@@ -914,6 +960,7 @@
 </head>
 <body>
 
+    <!-- NAVIGATION -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <div class="nav-logo">
@@ -930,6 +977,7 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero" id="heroSection">
         <div class="hero-bg"></div>
         <div class="container hero-content">
@@ -954,6 +1002,7 @@
         </div>
     </section>
 
+    <!-- WHY US SECTION -->
     <section class="why-section">
         <div class="container">
             <div class="why-grid">
@@ -965,6 +1014,7 @@
         </div>
     </section>
 
+    <!-- COURSES SECTION -->
     <section class="courses-section" id="courses">
         <div class="container">
             <div class="section-header">
@@ -976,6 +1026,7 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
@@ -990,6 +1041,7 @@
         </div>
     </section>
 
+    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-box">
@@ -1011,6 +1063,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-logo">
@@ -1024,6 +1077,7 @@
         </div>
     </footer>
 
+    <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
@@ -1079,7 +1133,7 @@
     </div>
 
     <script>
-        // ==================== গুগল স্ক্রিপ্ট URL (আপনার ডিপ্লয় করা URL দিন) ====================
+        // ==================== গুগল স্ক্রিপ্ট URL ====================
         var SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYED_ID/exec";
 
         // ==================== সাইট সেটিংস লোড ====================
@@ -1116,26 +1170,48 @@
         }
 
         function applySiteSettings() {
-            document.getElementById('logoIcon').innerHTML = siteSettings.logoIcon;
-            document.getElementById('logoIcon').style.background = `linear-gradient(135deg, ${siteSettings.primaryColor}, ${siteSettings.secondaryColor})`;
-            document.getElementById('siteNameBn').innerText = siteSettings.siteNameBn;
-            document.getElementById('siteNameEn').innerText = siteSettings.siteNameEn;
-            document.getElementById('footerLogoIcon').innerHTML = siteSettings.logoIcon;
-            document.getElementById('footerSiteName').innerText = siteSettings.siteNameBn;
-            document.getElementById('footerSiteNameEn').innerText = siteSettings.siteNameEn;
+            const logoIcon = document.getElementById('logoIcon');
+            if (logoIcon) {
+                logoIcon.innerHTML = siteSettings.logoIcon;
+                logoIcon.style.background = `linear-gradient(135deg, ${siteSettings.primaryColor}, ${siteSettings.secondaryColor})`;
+            }
+            const siteNameBn = document.getElementById('siteNameBn');
+            if (siteNameBn) siteNameBn.innerText = siteSettings.siteNameBn;
+            const siteNameEn = document.getElementById('siteNameEn');
+            if (siteNameEn) siteNameEn.innerText = siteSettings.siteNameEn;
+            const footerLogoIcon = document.getElementById('footerLogoIcon');
+            if (footerLogoIcon) footerLogoIcon.innerHTML = siteSettings.logoIcon;
+            const footerSiteName = document.getElementById('footerSiteName');
+            if (footerSiteName) footerSiteName.innerText = siteSettings.siteNameBn;
+            const footerSiteNameEn = document.getElementById('footerSiteNameEn');
+            if (footerSiteNameEn) footerSiteNameEn.innerText = siteSettings.siteNameEn;
             document.title = `${siteSettings.siteNameBn} | মেডিকেল ট্রেনিং কোর্স`;
-            document.getElementById('heroBadge').innerHTML = `<i class="fas fa-hospital-user"></i> ${siteSettings.heroBadge}`;
-            document.getElementById('heroTitle').innerHTML = `${siteSettings.heroTitleLine1} <span class="highlight">${siteSettings.heroTitleHighlight}</span>`;
-            document.getElementById('heroDesc').innerText = siteSettings.heroDesc;
-            document.getElementById('statStudents').innerText = siteSettings.statStudents;
-            document.getElementById('statCoursesCount').innerText = siteSettings.statCoursesCount;
-            document.getElementById('statCertificate').innerText = siteSettings.statCertificate;
-            document.getElementById('contactPhone').innerText = siteSettings.contactPhone;
-            document.getElementById('contactEmail').innerText = siteSettings.contactEmail;
-            document.getElementById('contactAddress').innerText = siteSettings.contactAddress;
+            
+            const heroBadge = document.getElementById('heroBadge');
+            if (heroBadge) heroBadge.innerHTML = `<i class="fas fa-hospital-user"></i> ${siteSettings.heroBadge}`;
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) heroTitle.innerHTML = `${siteSettings.heroTitleLine1} <span class="highlight">${siteSettings.heroTitleHighlight}</span>`;
+            const heroDesc = document.getElementById('heroDesc');
+            if (heroDesc) heroDesc.innerText = siteSettings.heroDesc;
+            
+            const statStudents = document.getElementById('statStudents');
+            if (statStudents) statStudents.innerText = siteSettings.statStudents;
+            const statCoursesCount = document.getElementById('statCoursesCount');
+            if (statCoursesCount) statCoursesCount.innerText = siteSettings.statCoursesCount;
+            const statCertificate = document.getElementById('statCertificate');
+            if (statCertificate) statCertificate.innerText = siteSettings.statCertificate;
+            
+            const contactPhone = document.getElementById('contactPhone');
+            if (contactPhone) contactPhone.innerText = siteSettings.contactPhone;
+            const contactEmail = document.getElementById('contactEmail');
+            if (contactEmail) contactEmail.innerText = siteSettings.contactEmail;
+            const contactAddress = document.getElementById('contactAddress');
+            if (contactAddress) contactAddress.innerText = siteSettings.contactAddress;
+            
             document.documentElement.style.setProperty('--primary', siteSettings.primaryColor);
             document.documentElement.style.setProperty('--primary-dark', siteSettings.primaryColor);
             document.documentElement.style.setProperty('--secondary', siteSettings.secondaryColor);
+            
             const heroSection = document.getElementById('heroSection');
             if (heroSection) {
                 heroSection.style.background = `linear-gradient(135deg, #064e3b 0%, #065f46 40%, ${siteSettings.primaryColor} 100%)`;
@@ -1151,7 +1227,7 @@
             { name: "মানব চিকিৎসা সহকারী", emoji: "👨‍⚕️", iconBg: "#dbeafe", priceRange: "৳৩,৫০০ - ৳১৫,০০০", plans: [{ duration: "৩ মাস", price: "৳৩,৫০০" }, { duration: "৬ মাস", price: "৳৮,০০০" }, { duration: "১ বছর", price: "৳১৫,০০০" }], level: "বিগিনার থেকে অ্যাডভান্স", seats: "৩০ আসন", desc: "ডাক্তারের সহকারী হিসেবে কাজ করার জন্য সম্পূর্ণ প্রশিক্ষণ।", topics: "রোগী ব্যবস্থাপনা, ওষুধ পরিচিতি, ইনজেকশন, ড্রেসিং", tagColor: "#1e40af", tagBg: "#dbeafe" },
             { name: "ফার্মেসি ও ওষুধ বিজ্ঞান", emoji: "💊", iconBg: "#fef9c3", priceRange: "৳৩,০০০ - ৳১০,০০০", plans: [{ duration: "৩ মাস", price: "৳৩,০০০" }, { duration: "৬ মাস", price: "৳৬,৫০০" }, { duration: "১ বছর", price: "৳১০,০০০" }], level: "বিগিনার ফ্রেন্ডলি", seats: "৩৫ আসন", desc: "ফার্মেসি পরিচালনার সম্পূর্ণ জ্ঞান অর্জন করুন।", topics: "ওষুধ পরিচিতি, ফার্মেসি আইন, স্টক ম্যানেজমেন্ট", tagColor: "#854d0e", tagBg: "#fef9c3" },
             { name: "ধাত্রীবিদ্যা ও মা-শিশু স্বাস্থ্য", emoji: "👶", iconBg: "#fce7f3", priceRange: "৳২,৮০০ - ৳১১,০০০", plans: [{ duration: "৩ মাস", price: "৳২,৮০০" }, { duration: "৬ মাস", price: "৳৬,০০০" }, { duration: "১ বছর", price: "৳১১,০০০" }], level: "মহিলাদের জন্য বিশেষ", seats: "২৫ আসন", desc: "মা ও শিশু স্বাস্থ্যসেবায় বিশেষজ্ঞ হোন।", topics: "গর্ভকালীন সেবা, প্রসব সহযোগিতা, নবজাতক পরিচর্যা", tagColor: "#9d174d", tagBg: "#fce7f3" },
-            { name: "প্যারামেডিক ও জরুরি সেবা", emoji: "🚑", iconBg: "#fee2e2", priceRange: "৳৪,০০০ - ৳১৮,০০০", plans: [{ duration: "৩ মাস", price: "৳৪,০০০" }, { duration: "৬ মাস", price: "৳৯,৫০০" }, { duration: "১ বছর", price: "৳১৮,০০০" }], level: "ইন্টারমিডিয়েট", seats: "২০ আসন", desc: "জরুরি চিকিৎসা সেবায় দক্ষ হয়ে উঠুন۔", topics: "CPR ও AED, ট্রমা ম্যানেজমেন্ট, অ্যাম্বুলেন্স সেবা", tagColor: "#991b1b", tagBg: "#fee2e2" }
+            { name: "প্যারামেডিক ও জরুরি সেবা", emoji: "🚑", iconBg: "#fee2e2", priceRange: "৳৪,০০০ - ৳১৮,০০০", plans: [{ duration: "৩ মাস", price: "৳৪,০০০" }, { duration: "৬ মাস", price: "৳৯,৫০০" }, { duration: "১ বছর", price: "৳১৮,০০০" }], level: "ইন্টারমিডিয়েট", seats: "২০ আসন", desc: "জরুরি চিকিৎসা সেবায় দক্ষ হয়ে উঠুন।", topics: "CPR ও AED, ট্রমা ম্যানেজমেন্ট, অ্যাম্বুলেন্স সেবা", tagColor: "#991b1b", tagBg: "#fee2e2" }
         ];
 
         function loadCoursesFromStorage() {
@@ -1174,6 +1250,7 @@
             const grid = document.getElementById('coursesGrid');
             if (!grid) return;
             grid.innerHTML = '';
+            
             courses.forEach((course, index) => {
                 const topics = course.topics.split(',');
                 const tagsHtml = topics.slice(0, 4).map(t => `<span class="cc-tag" style="background:${course.tagBg};color:${course.tagColor}">${t.trim()}</span>`).join('');
@@ -1191,69 +1268,145 @@
             });
         }
 
+        // ==================== মডাল ফাংশন ====================
         function openModal(index) {
             currentSelectedCourse = courses[index];
             const c = currentSelectedCourse;
-            document.getElementById('modalIcon').textContent = c.emoji;
-            document.getElementById('modalIcon').style.background = c.iconBg;
-            document.getElementById('modalTitle').textContent = c.name;
-            document.getElementById('modalMeta').textContent = `${c.level} · ${c.seats}`;
+            
+            const modalIcon = document.getElementById('modalIcon');
+            if (modalIcon) {
+                modalIcon.textContent = c.emoji;
+                modalIcon.style.background = c.iconBg;
+            }
+            const modalTitle = document.getElementById('modalTitle');
+            if (modalTitle) modalTitle.textContent = c.name;
+            const modalMeta = document.getElementById('modalMeta');
+            if (modalMeta) modalMeta.textContent = `${c.level} · ${c.seats}`;
+            
             const topics = c.topics.split(',');
             const topicsHtml = topics.map(t => `<span class="md-topic">${t.trim()}</span>`).join('');
-            document.getElementById('modalDetail').innerHTML = `
-                <p class="md-desc">${c.desc}</p>
-                <div class="md-stats"><div class="md-stat"><label>মূল্য পরিসর</label><span>${c.priceRange}</span></div><div class="md-stat"><label>লেভেল</label><span>${c.level}</span></div><div class="md-stat"><label>আসন সংখ্যা</label><span>${c.seats}</span></div></div>
-                <div class="md-topics">${topicsHtml}</div>
-            `;
-            document.getElementById('fName').value = '';
-            document.getElementById('fPhone').value = '';
-            document.getElementById('fAddress').value = '';
-            document.getElementById('fDuration').value = '';
-            document.getElementById('fMessage').value = '';
-            document.getElementById('modalFormWrap').style.display = 'block';
-            document.getElementById('modalSuccess').style.display = 'none';
-            document.getElementById('btnSubmit').disabled = false;
-            document.getElementById('btnSubmit').innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
-            document.getElementById('modalOverlay').classList.add('active');
+            
+            let planOptions = '';
+            if (c.plans && c.plans.length > 0) {
+                planOptions = c.plans.map((plan, idx) => `<option value="${idx}">${plan.duration} — ${plan.price}</option>`).join('');
+            }
+            
+            const planSelectorHtml = `<div class="plan-selector"><label><i class="fas fa-calendar-alt"></i> মেয়াদ নির্বাচন করুন <span class="req">*</span></label><select class="plan-dropdown" id="planDropdown"><option value="">— মেয়াদ বেছে নিন —</option>${planOptions}</select><div class="price-highlight" id="selectedPriceDisplay">নির্বাচিত মূল্য: ---</div></div>`;
+            
+            const modalDetail = document.getElementById('modalDetail');
+            if (modalDetail) {
+                modalDetail.innerHTML = `<p class="md-desc">${c.desc}</p><div class="md-stats"><div class="md-stat"><label>মূল্য পরিসর</label><span>${c.priceRange}</span></div><div class="md-stat"><label>লেভেল</label><span>${c.level}</span></div><div class="md-stat"><label>আসন সংখ্যা</label><span>${c.seats}</span></div></div>${planSelectorHtml}<div class="md-topics">${topicsHtml}</div>`;
+            }
+            
+            const fName = document.getElementById('fName');
+            if (fName) fName.value = '';
+            const fPhone = document.getElementById('fPhone');
+            if (fPhone) fPhone.value = '';
+            const fAddress = document.getElementById('fAddress');
+            if (fAddress) fAddress.value = '';
+            const fDuration = document.getElementById('fDuration');
+            if (fDuration) fDuration.value = '';
+            const fMessage = document.getElementById('fMessage');
+            if (fMessage) fMessage.value = '';
+            
+            const modalFormWrap = document.getElementById('modalFormWrap');
+            if (modalFormWrap) modalFormWrap.style.display = 'block';
+            const modalSuccess = document.getElementById('modalSuccess');
+            if (modalSuccess) modalSuccess.style.display = 'none';
+            const btnSubmit = document.getElementById('btnSubmit');
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
+            }
+            
+            setTimeout(() => {
+                const planDropdown = document.getElementById('planDropdown');
+                if (planDropdown) {
+                    planDropdown.onchange = function() {
+                        const priceDisplay = document.getElementById('selectedPriceDisplay');
+                        if (this.value !== "" && c.plans && c.plans[parseInt(this.value)]) {
+                            const selectedPlan = c.plans[parseInt(this.value)];
+                            if (priceDisplay) {
+                                priceDisplay.innerHTML = `নির্বাচিত মূল্য: ${selectedPlan.price} (${selectedPlan.duration})`;
+                                priceDisplay.style.background = "#d1fae5";
+                            }
+                        } else {
+                            if (priceDisplay) {
+                                priceDisplay.innerHTML = "নির্বাচিত মূল্য: ---";
+                                priceDisplay.style.background = "";
+                            }
+                        }
+                    };
+                }
+            }, 50);
+            
+            const modalOverlay = document.getElementById('modalOverlay');
+            if (modalOverlay) modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            const modalBox = document.querySelector('.modal-box');
+            if (modalBox) modalBox.scrollTop = 0;
         }
 
         function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
+            const modalOverlay = document.getElementById('modalOverlay');
+            if (modalOverlay) modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
+        // ==================== ফর্ম সাবমিট ====================
         document.getElementById('btnSubmit')?.addEventListener('click', function() {
             const name = document.getElementById('fName')?.value.trim();
             const phone = document.getElementById('fPhone')?.value.trim();
             const address = document.getElementById('fAddress')?.value.trim();
             const duration = document.getElementById('fDuration')?.value;
             const message = document.getElementById('fMessage')?.value.trim();
-            const course = currentSelectedCourse?.name;
+            const planDropdown = document.getElementById('planDropdown');
+            
+            let selectedPlanText = "";
+            if (planDropdown && planDropdown.selectedIndex > 0) {
+                selectedPlanText = planDropdown.options[planDropdown.selectedIndex]?.text || "";
+            }
             
             if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন'); return; }
             if (!phone || phone.length < 10) { alert('সঠিক ফোন নম্বর দিন'); return; }
             if (!address) { alert('অনুগ্রহ করে আপনার ঠিকানা দিন'); return; }
-            if (!duration) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
-            if (!course) { alert('কোর্স তথ্য পাওয়া যায়নি'); return; }
+            if (!duration && !selectedPlanText) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
+            if (!currentSelectedCourse) { alert('কোর্স তথ্য পাওয়া যায়নি'); return; }
             
             const btn = this;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
             btn.disabled = true;
             
-            const payload = { name: name, phone: phone, address: address, course: course, duration: duration, message: message };
+            const finalDuration = duration || selectedPlanText;
+            
+            const payload = {
+                name: name,
+                phone: phone,
+                address: address,
+                course: currentSelectedCourse.name,
+                duration: finalDuration,
+                message: message,
+                timestamp: new Date().toLocaleString('bn-BD')
+            };
             
             let allApplications = localStorage.getItem('palli_applications');
             allApplications = allApplications ? JSON.parse(allApplications) : [];
-            allApplications.push({ ...payload, timestamp: new Date().toLocaleString('bn-BD') });
+            allApplications.push(payload);
             localStorage.setItem('palli_applications', JSON.stringify(allApplications));
             
             if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/YOUR_DEPLOYED_ID/exec") {
-                fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(e => console.log("Submit error:", e));
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(e => console.log("Submit error:", e));
             }
             
-            document.getElementById('modalFormWrap').style.display = 'none';
-            document.getElementById('modalSuccess').style.display = 'block';
+            const modalFormWrap = document.getElementById('modalFormWrap');
+            if (modalFormWrap) modalFormWrap.style.display = 'none';
+            const modalSuccess = document.getElementById('modalSuccess');
+            if (modalSuccess) modalSuccess.style.display = 'block';
         });
         
         document.getElementById('modalClose')?.addEventListener('click', closeModal);
@@ -1263,8 +1416,10 @@
         
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('nav');
-            if (window.scrollY > 20) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+            if (nav) {
+                if (window.scrollY > 20) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
         });
         
         window.addEventListener('storage', (e) => {
