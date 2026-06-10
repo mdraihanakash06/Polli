@@ -4,7 +4,7 @@
 // ============================================================
 
 // ==================== গুগল স্ক্রিপ্ট URL (আপনার ডিপ্লয় করা URL দিন) ====================
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwh9qZ_R0PYSOlO4JXIcKsgcrJrr6YJ6-0KodY6a2EYekgwMkebjfNG2xaBcHHCYuNy6g/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_kO-bh6F0aCEnv1ObBBvIJzn-munFV7vpTl3fXz9VDzK5fQcPOVyRwxGecUHcfqxHOg/exec";
 
 // ==================== সাইট সেটিংস লোড ====================
 let siteSettings = {
