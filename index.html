@@ -162,53 +162,61 @@
     </footer>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box">
-        <button class="modal-close" id="modalClose">✕</button>
-        <div class="modal-header">
-            <div class="modal-icon" id="modalIcon"></div>
-            <div>
-                <h2 id="modalTitle"></h2>
-                <p id="modalMeta"></p>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalMeta"></p>
+                </div>
             </div>
-        </div>
-        <div class="modal-body">
-            <div class="modal-detail" id="modalDetail"></div>
-            
-            <!-- শুধু নাম, ফোন, ঠিকানা, প্রশ্ন -->
-            <div id="modalFormWrap">
-                <h3 class="form-heading">📝 ভর্তির আবেদন করুন</h3>
-                <div class="form-grid">
-                    <div class="fg">
-                        <label>পূর্ণ নাম <span class="req">*</span></label>
-                        <input type="text" id="fName" placeholder="আপনার সম্পূর্ণ নাম">
+            <div class="modal-body">
+                <div class="modal-detail" id="modalDetail"></div>
+                <div id="modalFormWrap">
+                    <h3 class="form-heading">ভর্তির আবেদন করুন</h3>
+                    <div class="form-grid">
+                        <div class="fg">
+                            <label>পূর্ণ নাম <span class="req">*</span></label>
+                            <input type="text" id="fName" placeholder="আপনার সম্পূর্ণ নাম">
+                        </div>
+                        <div class="fg">
+                            <label>ফোন নম্বর <span class="req">*</span></label>
+                            <input type="tel" id="fPhone" placeholder="01XXXXXXXXX">
+                        </div>
                     </div>
                     <div class="fg">
-                        <label>ফোন নম্বর <span class="req">*</span></label>
-                        <input type="tel" id="fPhone" placeholder="01XXXXXXXXX">
+                        <label>ইমেইল ঠিকানা</label>
+                        <input type="email" id="fEmail" placeholder="example@gmail.com">
                     </div>
+                    <div class="fg">
+                        <label>কোর্স নির্বাচন <span class="req">*</span></label>
+                        <select id="fCourse">
+                            <option value="">— কোর্স বেছে নিন —</option>
+                        </select>
+                    </div>
+                    <div class="fg">
+                        <label>জেলা / এলাকা</label>
+                        <input type="text" id="fArea" placeholder="আপনার জেলার নাম">
+                    </div>
+                    <div class="fg">
+                        <label>কোনো প্রশ্ন?</label>
+                        <textarea id="fMsg" placeholder="ঐচ্ছিক..."></textarea>
+                    </div>
+                    <button class="btn-submit" id="btnSubmit">আবেদন জমা দিন →</button>
+                    <p class="form-note">🔒 আপনার তথ্য সম্পূর্ণ নিরাপদ ও গোপনীয়।</p>
                 </div>
-                <div class="fg">
-                    <label>ঠিকানা <span class="req">*</span></label>
-                    <input type="text" id="fAddress" placeholder="জেলা / উপজেলা / গ্রাম">
+                <div class="modal-success" id="modalSuccess">
+                    <div class="success-circle">✓</div>
+                    <h3>আবেদন সফল!</h3>
+                    <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব。<br>ধন্যবাদ আপনার আগ্রহের জন্য।</p>
+                    <button class="btn-close-success" id="customCloseBtn">আপনার লিংক দিন</button>
                 </div>
-                <div class="fg">
-                    <label>কোনো প্রশ্ন (ঐচ্ছিক)</label>
-                    <textarea id="fMsg" placeholder="আপনার কোনো প্রশ্ন থাকলে লিখুন..."></textarea>
-                </div>
-                <button class="btn-submit" id="btnSubmit">✅ আবেদন জমা দিন</button>
-                <p class="form-note">🔒 আপনার তথ্য নিরাপদ ও গোপনীয় রাখা হবে।</p>
-            </div>
-
-            <div class="modal-success" id="modalSuccess">
-                <div class="success-circle">✓</div>
-                <h3>আবেদন সফল!</h3>
-                <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>ধন্যবাদ আপনার আগ্রহের জন্য।</p>
-                <button class="btn-close-success" id="customCloseBtn">ঠিক আছে</button>
             </div>
         </div>
     </div>
-</div>
+
 
     <script src="script.js"></script>
 </body>
