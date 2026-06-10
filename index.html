@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="পল্লী চিকিৎসা একাডেমি — প্রফেশনাল মেডিকেল ট্রেনিং কোর্স">
+    <title id="siteTitle">পল্লী চিকিৎসা একাডেমি | মেডিকেল ট্রেনিং কোর্স</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* ===== VARIABLES (ডাইনামিক হবে) ===== */
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --accent: #0891b2;
+            --text: #1e293b;
+            --text-2: #475569;
+            --text-3: #94a3b8;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .nav.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: var(--text-3);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .admin-link {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .admin-link:hover {
+            background: #e2e8f0;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, var(--primary) 100%);
+            padding: 130px 0 80px;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #a7f3d0;
+            font-size: 13px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 28px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 8vw, 56px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #6ee7b7;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #a7f3d0;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(4px);
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 12px;
+            color: #86efcd;
+            margin-top: 4px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: var(--primary-dark);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-wave svg {
+            display: block;
+            width: 100%;
+            height: 60px;
+        }
+
+        /* ===== WHY US SECTION ===== */
+        .why-section {
+            background: #f8fafc;
+            padding: 70px 0 50px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+
+        .why-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .why-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        .courses-section {
+            padding: 70px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 38px);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-2);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        /* ===== COURSE CARD ===== */
+        .course-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .cc-top {
+            padding: 24px 24px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .cc-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .cc-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .cc-level {
+            font-size: 13px;
+            color: var(--text-3);
+            font-weight: 500;
+        }
+
+        .cc-body {
+            padding: 16px 24px;
+        }
+
+        .cc-desc {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        .cc-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .cc-tag {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 4px 14px;
+            border-radius: 50px;
+        }
+
+        .cc-footer {
+            padding: 16px 24px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .cc-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .cc-price-range {
+            font-size: 12px;
+            color: var(--text-3);
+        }
+
+        .cc-enroll {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .cc-enroll:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f0fdf4, #f8fafc);
+            padding: 70px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .tcard {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .tcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .tcard-stars {
+            color: #f59e0b;
+            font-size: 16px;
+            margin-bottom: 14px;
+            letter-spacing: 3px;
+        }
+
+        .tcard p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .tcard-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tcard-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .tcard-author b {
+            display: block;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .tcard-author span {
+            font-size: 12px;
+            color: var(--text-3);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            padding: 70px 0;
+            background: var(--white);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #064e3b, var(--primary));
+            border-radius: 28px;
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 12px 0 12px;
+        }
+
+        .contact-info > p {
+            font-size: 15px;
+            color: #a7f3d0;
+        }
+
+        .contact-items {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #d1fae5;
+            font-size: 15px;
+        }
+
+        .contact-item i {
+            width: 24px;
+            font-size: 18px;
+        }
+
+        .contact-form-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .contact-form-box p {
+            color: #a7f3d0;
+            margin-bottom: 16px;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary-dark);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-contact:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0f172a;
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: 32px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 12px;
+            float: right;
+            margin: 12px 12px 0 0;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px 0;
+        }
+
+        .modal-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            font-size: 13px;
+            color: var(--text-3);
+        }
+
+        .modal-body {
+            padding: 0 24px 28px;
+        }
+
+        .modal-detail {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .md-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .md-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .md-stat {
+            background: white;
+            border-radius: 14px;
+            padding: 10px 14px;
+        }
+
+        .md-stat label {
+            font-size: 11px;
+            color: var(--text-3);
+            display: block;
+        }
+
+        .md-stat span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .plan-selector {
+            margin: 16px 0;
+        }
+
+        .plan-selector label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .plan-dropdown {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .plan-dropdown:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .price-highlight {
+            background: var(--primary-light);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .md-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .md-topic {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 4px 14px;
+            border-radius: 50px;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .form-heading {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .fg {
+            margin-bottom: 16px;
+        }
+
+        .fg label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .req {
+            color: #ef4444;
+        }
+
+        .fg input, .fg select, .fg textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .fg textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: var(--text-3);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .modal-success {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .success-circle {
+            width: 80px;
+            height: 80px;
+            background: #dcfce7;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--primary);
+        }
+
+        .modal-success h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .btn-close-success {
+            margin-top: 24px;
+            padding: 12px 32px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (min-width: 640px) {
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .courses-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .why-grid { grid-template-columns: repeat(4, 1fr); }
+            .courses-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .contact-box { flex-direction: row; align-items: center; }
+            .contact-info { flex: 1; }
+            .contact-form-box { flex: 0 0 280px; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <div class="logo-icon" id="logoIcon">✚</div>
+                <div>
+                    <div class="logo-title" id="siteNameBn">পল্লী চিকিৎসা একাডেমি</div>
+                    <div class="logo-sub" id="siteNameEn">Palli Chikitsa Academy</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="admin.html" class="admin-link"><i class="fas fa-user-shield"></i> অ্যাডমিন</a>
+                <a href="#courses" class="nav-cta"><i class="fas fa-arrow-right"></i> ভর্তি হন</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="heroSection">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-badge" id="heroBadge">
+                <i class="fas fa-hospital-user"></i> 🏥 বাংলাদেশের বিশ্বস্ত মেডিকেল ট্রেনিং ইনস্টিটিউট
+            </div>
+            <h1 class="hero-title" id="heroTitle">দক্ষ হোন, মানুষের <span class="highlight" id="heroHighlight">সেবা করুন</span></h1>
+            <p class="hero-desc" id="heroDesc">আধুনিক চিকিৎসা বিজ্ঞানের প্রশিক্ষণ নিন — গ্রামে-শহরে সুস্বাস্থ্য নিশ্চিত করতে আমরা প্রতিশ্রুতিবদ্ধ।</p>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" id="statStudents">৫০০+</span><span class="stat-label">সফল শিক্ষার্থী</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num" id="statCoursesCount">৫টি</span><span class="stat-label">বিশেষ কোর্স</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num" id="statCertificate">১০০%</span><span class="stat-label">সার্টিফিকেট</span></div>
+            </div>
+            <a href="#courses" class="btn-hero">কোর্স দেখুন <i class="fas fa-arrow-down"></i></a>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+                <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- WHY US SECTION -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-card"><div class="why-icon"><i class="fas fa-chalkboard-user"></i></div><h3>অভিজ্ঞ প্রশিক্ষক</h3><p>অভিজ্ঞ ডাক্তার ও মেডিকেল বিশেষজ্ঞদের তত্ত্বাবধানে সরাসরি প্রশিক্ষণ।</p></div>
+                <div class="why-card"><div class="why-icon"><i class="fas fa-certificate"></i></div><h3>সরকারি সার্টিফিকেট</h3><p>কোর্স সম্পন্নে মান্যতাপ্রাপ্ত সার্টিফিকেট — চাকরি ও প্র্যাকটিসে গ্রহণযোগ্য।</p></div>
+                <div class="why-card"><div class="why-icon"><i class="fas fa-laptop-house"></i></div><h3>অনলাইন + অফলাইন</h3><p>ঘরে বসে অনলাইনে ক্লাস করুন বা সরাসরি কেন্দ্রে এসে শিখুন।</p></div>
+                <div class="why-card"><div class="why-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>সাশ্রয়ী মূল্য</h3><p>সহজ কিস্তিতে কোর্স ফি পরিশোধের সুবিধা — সবার জন্য সুলভ।</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section class="courses-section" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">আমাদের কোর্সসমূহ</p>
+                <h2 class="section-title">আপনার পছন্দের কোর্সটি বেছে নিন</h2>
+                <p class="section-desc">প্রতিটি কোর্স তৈরি করা হয়েছে বাস্তব চিকিৎসা সেবার চাহিদা মাথায় রেখে</p>
+            </div>
+            <div class="courses-grid" id="coursesGrid"></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">শিক্ষার্থীদের মতামত</p>
+                <h2 class="section-title">তারা কী বলছেন</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="tcard"><div class="tcard-stars">★★★★★</div><p>"পল্লী চিকিৎসা কোর্সটি আমার জীবন বদলে দিয়েছে। এখন আমি গ্রামে প্রাথমিক চিকিৎসা দিতে পারি।"</p><div class="tcard-author"><div class="tcard-avatar">র</div><div><b>রহিমা বেগম</b><span>কুমিল্লা</span></div></div></div>
+                <div class="tcard"><div class="tcard-stars">★★★★★</div><p>"মাত্র ৩ মাসে ফার্মেসি কোর্স শেষ করে এখন নিজের দোকান চালাচ্ছি। প্রশিক্ষকরা অসাধারণ।"</p><div class="tcard-author"><div class="tcard-avatar">আ</div><div><b>আরিফুল ইসলাম</b><span>সিলেট</span></div></div></div>
+                <div class="tcard"><div class="tcard-stars">★★★★★</div><p>"ধাত্রীবিদ্যা কোর্সটি করে আমি এখন মা ও শিশু স্বাস্থ্যসেবায় কাজ করছি। সার্টিফিকেট সবখানে গ্রাহ্য।"</p><div class="tcard-author"><div class="tcard-avatar">স</div><div><b>সালমা খাতুন</b><span>রাজশাহী</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-info">
+                    <p class="section-label" style="color:#86efcd">যোগাযোগ করুন</p>
+                    <h2>আমাদের সাথে কথা বলুন</h2>
+                    <p>যেকোনো প্রশ্ন বা পরামর্শের জন্য আমরা সর্বদা প্রস্তুত।</p>
+                    <div class="contact-items">
+                        <div class="contact-item"><i class="fas fa-phone-alt"></i><span id="contactPhone">০১৭০০-০০০০০০</span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span id="contactEmail">info@pallichikitsa.com</span></div>
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span id="contactAddress">ঢাকা, বাংলাদেশ</span></div>
+                    </div>
+                </div>
+                <div class="contact-form-box">
+                    <p><i class="fas fa-graduation-cap"></i> দ্রুত ভর্তির জন্য যেকোনো কোর্স কার্ডে ক্লিক করুন</p>
+                    <a href="#courses" class="btn-contact">কোর্স দেখুন <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <div class="logo-icon" style="background:rgba(255,255,255,0.15)" id="footerLogoIcon">✚</div>
+                <div>
+                    <div class="logo-title" style="color:#fff" id="footerSiteName">পল্লী চিকিৎসা একাডেমি</div>
+                    <div class="logo-sub" style="color:#94a3b8" id="footerSiteNameEn">Palli Chikitsa Academy</div>
+                </div>
+            </div>
+            <p class="footer-copy">© ২০২৫ পল্লী চিকিৎসা একাডেমি। সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalMeta"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-detail" id="modalDetail"></div>
+                <div id="modalFormWrap">
+                    <h3 class="form-heading"><i class="fas fa-pen-alt"></i> ভর্তির আবেদন করুন</h3>
+                    <div class="form-grid">
+                        <div class="fg">
+                            <label>পূর্ণ নাম <span class="req">*</span></label>
+                            <input type="text" id="fName" placeholder="আপনার সম্পূর্ণ নাম">
+                        </div>
+                        <div class="fg">
+                            <label>ফোন নম্বর <span class="req">*</span></label>
+                            <input type="tel" id="fPhone" placeholder="01XXXXXXXXX">
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <label>ঠিকানা <span class="req">*</span></label>
+                        <input type="text" id="fAddress" placeholder="জেলা / উপজেলা / গ্রাম">
+                    </div>
+                    <div class="fg">
+                        <label>মেয়াদ নির্বাচন <span class="req">*</span></label>
+                        <select id="fDuration">
+                            <option value="">— মেয়াদ বেছে নিন —</option>
+                            <option value="৩ মাস">৩ মাস</option>
+                            <option value="৬ মাস">৬ মাস</option>
+                            <option value="১ বছর">১ বছর</option>
+                        </select>
+                    </div>
+                    <div class="fg">
+                        <label>কোনো প্রশ্ন (ঐচ্ছিক)</label>
+                        <textarea id="fMessage" placeholder="আপনার কোনো প্রশ্ন থাকলে লিখুন..."></textarea>
+                    </div>
+                    <button class="btn-submit" id="btnSubmit"><i class="fas fa-paper-plane"></i> আবেদন জমা দিন</button>
+                    <p class="form-note"><i class="fas fa-lock"></i> আপনার তথ্য সম্পূর্ণ নিরাপদ ও গোপনীয়।</p>
+                </div>
+                <div class="modal-success" id="modalSuccess">
+                    <div class="success-circle"><i class="fas fa-check"></i></div>
+                    <h3>আবেদন সফল!</h3>
+                    <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>ধন্যবাদ আপনার আগ্রহের জন্য।</p>
+                    <button class="btn-close-success" id="customCloseBtn">ঠিক আছে</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== গুগল স্ক্রিপ্ট URL ====================
+        var SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYED_ID/exec";
+
+        // ==================== সাইট সেটিংস লোড ====================
+        let siteSettings = {
+            siteNameBn: "পল্লী চিকিৎসা একাডেমি",
+            siteNameEn: "Palli Chikitsa Academy",
+            logoIcon: "✚",
+            logoBgColor: "#059669",
+            heroBadge: "🏥 বাংলাদেশের বিশ্বস্ত মেডিকেল ট্রেনিং ইনস্টিটিউট",
+            heroTitleLine1: "দক্ষ হোন, মানুষের",
+            heroTitleHighlight: "সেবা করুন",
+            heroDesc: "আধুনিক চিকিৎসা বিজ্ঞানের প্রশিক্ষণ নিন — গ্রামে-শহরে সুস্বাস্থ্য নিশ্চিত করতে আমরা প্রতিশ্রুতিবদ্ধ।",
+            contactPhone: "০১৭০০-০০০০০০",
+            contactEmail: "info@pallichikitsa.com",
+            contactAddress: "ঢাকা, বাংলাদেশ",
+            statStudents: "৫০০+",
+            statCoursesCount: "৫টি",
+            statCertificate: "১০০%",
+            primaryColor: "#059669",
+            secondaryColor: "#10b981"
+        };
+
+        function loadSiteSettings() {
+            const stored = localStorage.getItem('palli_site_settings');
+            if (stored && stored !== "undefined") {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && Object.keys(parsed).length > 0) {
+                        siteSettings = parsed;
+                    }
+                } catch(e) {}
+            }
+            applySiteSettings();
+        }
+
+        function applySiteSettings() {
+            const logoIcon = document.getElementById('logoIcon');
+            if (logoIcon) {
+                logoIcon.innerHTML = siteSettings.logoIcon;
+                logoIcon.style.background = `linear-gradient(135deg, ${siteSettings.primaryColor}, ${siteSettings.secondaryColor})`;
+            }
+            const siteNameBn = document.getElementById('siteNameBn');
+            if (siteNameBn) siteNameBn.innerText = siteSettings.siteNameBn;
+            const siteNameEn = document.getElementById('siteNameEn');
+            if (siteNameEn) siteNameEn.innerText = siteSettings.siteNameEn;
+            const footerLogoIcon = document.getElementById('footerLogoIcon');
+            if (footerLogoIcon) footerLogoIcon.innerHTML = siteSettings.logoIcon;
+            const footerSiteName = document.getElementById('footerSiteName');
+            if (footerSiteName) footerSiteName.innerText = siteSettings.siteNameBn;
+            const footerSiteNameEn = document.getElementById('footerSiteNameEn');
+            if (footerSiteNameEn) footerSiteNameEn.innerText = siteSettings.siteNameEn;
+            document.title = `${siteSettings.siteNameBn} | মেডিকেল ট্রেনিং কোর্স`;
+            
+            const heroBadge = document.getElementById('heroBadge');
+            if (heroBadge) heroBadge.innerHTML = `<i class="fas fa-hospital-user"></i> ${siteSettings.heroBadge}`;
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) heroTitle.innerHTML = `${siteSettings.heroTitleLine1} <span class="highlight">${siteSettings.heroTitleHighlight}</span>`;
+            const heroDesc = document.getElementById('heroDesc');
+            if (heroDesc) heroDesc.innerText = siteSettings.heroDesc;
+            
+            const statStudents = document.getElementById('statStudents');
+            if (statStudents) statStudents.innerText = siteSettings.statStudents;
+            const statCoursesCount = document.getElementById('statCoursesCount');
+            if (statCoursesCount) statCoursesCount.innerText = siteSettings.statCoursesCount;
+            const statCertificate = document.getElementById('statCertificate');
+            if (statCertificate) statCertificate.innerText = siteSettings.statCertificate;
+            
+            const contactPhone = document.getElementById('contactPhone');
+            if (contactPhone) contactPhone.innerText = siteSettings.contactPhone;
+            const contactEmail = document.getElementById('contactEmail');
+            if (contactEmail) contactEmail.innerText = siteSettings.contactEmail;
+            const contactAddress = document.getElementById('contactAddress');
+            if (contactAddress) contactAddress.innerText = siteSettings.contactAddress;
+            
+            document.documentElement.style.setProperty('--primary', siteSettings.primaryColor);
+            document.documentElement.style.setProperty('--primary-dark', siteSettings.primaryColor);
+            document.documentElement.style.setProperty('--secondary', siteSettings.secondaryColor);
+            
+            const heroSection = document.getElementById('heroSection');
+            if (heroSection) {
+                heroSection.style.background = `linear-gradient(135deg, #064e3b 0%, #065f46 40%, ${siteSettings.primaryColor} 100%)`;
+            }
+        }
+
+        // ==================== কোর্সের ডেটা ====================
+        let courses = [];
+        let currentSelectedCourse = null;
+
+        const defaultCourses = [
+            { name: "পল্লী চিকিৎসা কোর্স", emoji: "🏥", iconBg: "#dcfce7", priceRange: "৳২,৫০০ - ৳১২,০০০", plans: [{ duration: "৩ মাস", price: "৳২,৫০০" }, { duration: "৬ মাস", price: "৳৫,৫০০" }, { duration: "১ বছর", price: "৳১২,০০০" }], level: "সবার জন্য উপযুক্ত", seats: "৪০ আসন", desc: "গ্রামীণ জনগোষ্ঠীকে প্রাথমিক স্বাস্থ্যসেবা দেওয়ার জন্য এই কোর্সটি বিশেষভাবে তৈরি।", topics: "প্রাথমিক চিকিৎসা, জ্বর-ঠান্ডা, ডায়রিয়া, রক্তচাপ", tagColor: "#166534", tagBg: "#dcfce7" },
+            { name: "মানব চিকিৎসা সহকারী", emoji: "👨‍⚕️", iconBg: "#dbeafe", priceRange: "৳৩,৫০০ - ৳১৫,০০০", plans: [{ duration: "৩ মাস", price: "৳৩,৫০০" }, { duration: "৬ মাস", price: "৳৮,০০০" }, { duration: "১ বছর", price: "৳১৫,০০০" }], level: "বিগিনার থেকে অ্যাডভান্স", seats: "৩০ আসন", desc: "ডাক্তারের সহকারী হিসেবে কাজ করার জন্য সম্পূর্ণ প্রশিক্ষণ।", topics: "রোগী ব্যবস্থাপনা, ওষুধ পরিচিতি, ইনজেকশন, ড্রেসিং", tagColor: "#1e40af", tagBg: "#dbeafe" },
+            { name: "ফার্মেসি ও ওষুধ বিজ্ঞান", emoji: "💊", iconBg: "#fef9c3", priceRange: "৳৩,০০০ - ৳১০,০০০", plans: [{ duration: "৩ মাস", price: "৳৩,০০০" }, { duration: "৬ মাস", price: "৳৬,৫০০" }, { duration: "১ বছর", price: "৳১০,০০০" }], level: "বিগিনার ফ্রেন্ডলি", seats: "৩৫ আসন", desc: "ফার্মেসি পরিচালনার সম্পূর্ণ জ্ঞান অর্জন করুন।", topics: "ওষুধ পরিচিতি, ফার্মেসি আইন, স্টক ম্যানেজমেন্ট", tagColor: "#854d0e", tagBg: "#fef9c3" },
+            { name: "ধাত্রীবিদ্যা ও মা-শিশু স্বাস্থ্য", emoji: "👶", iconBg: "#fce7f3", priceRange: "৳২,৮০০ - ৳১১,০০০", plans: [{ duration: "৩ মাস", price: "৳২,৮০০" }, { duration: "৬ মাস", price: "৳৬,০০০" }, { duration: "১ বছর", price: "৳১১,০০০" }], level: "মহিলাদের জন্য বিশেষ", seats: "২৫ আসন", desc: "মা ও শিশু স্বাস্থ্যসেবায় বিশেষজ্ঞ হোন।", topics: "গর্ভকালীন সেবা, প্রসব সহযোগিতা, নবজাতক পরিচর্যা", tagColor: "#9d174d", tagBg: "#fce7f3" },
+            { name: "প্যারামেডিক ও জরুরি সেবা", emoji: "🚑", iconBg: "#fee2e2", priceRange: "৳৪,০০০ - ৳১৮,০০০", plans: [{ duration: "৩ মাস", price: "৳৪,০০০" }, { duration: "৬ মাস", price: "৳৯,৫০০" }, { duration: "১ বছর", price: "৳১৮,০০০" }], level: "ইন্টারমিডিয়েট", seats: "২০ আসন", desc: "জরুরি চিকিৎসা সেবায় দক্ষ হয়ে উঠুন।", topics: "CPR ও AED, ট্রমা ম্যানেজমেন্ট, অ্যাম্বুলেন্স সেবা", tagColor: "#991b1b", tagBg: "#fee2e2" }
+        ];
+
+        function loadCoursesFromStorage() {
+            const stored = localStorage.getItem('palli_courses_live');
+            if (stored && stored !== "undefined") {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        courses = parsed;
+                        renderCourses();
+                        return;
+                    }
+                } catch(e) {}
+            }
+            courses = JSON.parse(JSON.stringify(defaultCourses));
+            renderCourses();
+        }
+
+        function renderCourses() {
+            const grid = document.getElementById('coursesGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            courses.forEach((course, index) => {
+                const topics = course.topics.split(',');
+                const tagsHtml = topics.slice(0, 4).map(t => `<span class="cc-tag" style="background:${course.tagBg};color:${course.tagColor}">${t.trim()}</span>`).join('');
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                card.innerHTML = `
+                    <div class="cc-top"><div class="cc-icon" style="background:${course.iconBg}">${course.emoji}</div><div class="cc-info"><h3>${course.name}</h3><div class="cc-level">${course.level}</div></div></div>
+                    <div class="cc-body"><p class="cc-desc">${course.desc.substring(0, 120)}...</p><div class="cc-tags">${tagsHtml}</div></div>
+                    <div class="cc-footer"><div><div class="cc-price">${course.priceRange}</div><div class="cc-price-range">মেয়াদ ভেদে মূল্য</div></div><button class="cc-enroll" data-index="${index}">ভর্তি হন <i class="fas fa-arrow-right"></i></button></div>
+                `;
+                const enrollBtn = card.querySelector('.cc-enroll');
+                enrollBtn.addEventListener('click', (e) => { e.stopPropagation(); openModal(index); });
+                card.addEventListener('click', () => openModal(index));
+                grid.appendChild(card);
+            });
+        }
+
+        // ==================== মডাল ফাংশন ====================
+        function openModal(index) {
+            currentSelectedCourse = courses[index];
+            const c = currentSelectedCourse;
+            
+            const modalIcon = document.getElementById('modalIcon');
+            if (modalIcon) {
+                modalIcon.textContent = c.emoji;
+                modalIcon.style.background = c.iconBg;
+            }
+            const modalTitle = document.getElementById('modalTitle');
+            if (modalTitle) modalTitle.textContent = c.name;
+            const modalMeta = document.getElementById('modalMeta');
+            if (modalMeta) modalMeta.textContent = `${c.level} · ${c.seats}`;
+            
+            const topics = c.topics.split(',');
+            const topicsHtml = topics.map(t => `<span class="md-topic">${t.trim()}</span>`).join('');
+            
+            let planOptions = '';
+            if (c.plans && c.plans.length > 0) {
+                planOptions = c.plans.map((plan, idx) => `<option value="${idx}">${plan.duration} — ${plan.price}</option>`).join('');
+            }
+            
+            const planSelectorHtml = `<div class="plan-selector"><label><i class="fas fa-calendar-alt"></i> মেয়াদ নির্বাচন করুন <span class="req">*</span></label><select class="plan-dropdown" id="planDropdown"><option value="">— মেয়াদ বেছে নিন —</option>${planOptions}</select><div class="price-highlight" id="selectedPriceDisplay">নির্বাচিত মূল্য: ---</div></div>`;
+            
+            const modalDetail = document.getElementById('modalDetail');
+            if (modalDetail) {
+                modalDetail.innerHTML = `<p class="md-desc">${c.desc}</p><div class="md-stats"><div class="md-stat"><label>মূল্য পরিসর</label><span>${c.priceRange}</span></div><div class="md-stat"><label>লেভেল</label><span>${c.level}</span></div><div class="md-stat"><label>আসন সংখ্যা</label><span>${c.seats}</span></div></div>${planSelectorHtml}<div class="md-topics">${topicsHtml}</div>`;
+            }
+            
+            const fName = document.getElementById('fName');
+            if (fName) fName.value = '';
+            const fPhone = document.getElementById('fPhone');
+            if (fPhone) fPhone.value = '';
+            const fAddress = document.getElementById('fAddress');
+            if (fAddress) fAddress.value = '';
+            const fDuration = document.getElementById('fDuration');
+            if (fDuration) fDuration.value = '';
+            const fMessage = document.getElementById('fMessage');
+            if (fMessage) fMessage.value = '';
+            
+            const modalFormWrap = document.getElementById('modalFormWrap');
+            if (modalFormWrap) modalFormWrap.style.display = 'block';
+            const modalSuccess = document.getElementById('modalSuccess');
+            if (modalSuccess) modalSuccess.style.display = 'none';
+            const btnSubmit = document.getElementById('btnSubmit');
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
+            }
+            
+            setTimeout(() => {
+                const planDropdown = document.getElementById('planDropdown');
+                if (planDropdown) {
+                    planDropdown.onchange = function() {
+                        const priceDisplay = document.getElementById('selectedPriceDisplay');
+                        if (this.value !== "" && c.plans && c.plans[parseInt(this.value)]) {
+                            const selectedPlan = c.plans[parseInt(this.value)];
+                            if (priceDisplay) {
+                                priceDisplay.innerHTML = `নির্বাচিত মূল্য: ${selectedPlan.price} (${selectedPlan.duration})`;
+                                priceDisplay.style.background = "#d1fae5";
+                            }
+                        } else {
+                            if (priceDisplay) {
+                                priceDisplay.innerHTML = "নির্বাচিত মূল্য: ---";
+                                priceDisplay.style.background = "";
+                            }
+                        }
+                    };
+                }
+            }, 50);
+            
+            const modalOverlay = document.getElementById('modalOverlay');
+            if (modalOverlay) modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const modalBox = document.querySelector('.modal-box');
+            if (modalBox) modalBox.scrollTop = 0;
+        }
+
+        function closeModal() {
+            const modalOverlay = document.getElementById('modalOverlay');
+            if (modalOverlay) modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ==================== ফর্ম সাবমিট ====================
+        document.getElementById('btnSubmit')?.addEventListener('click', function() {
+            const name = document.getElementById('fName')?.value.trim();
+            const phone = document.getElementById('fPhone')?.value.trim();
+            const address = document.getElementById('fAddress')?.value.trim();
+            const duration = document.getElementById('fDuration')?.value;
+            const message = document.getElementById('fMessage')?.value.trim();
+            const planDropdown = document.getElementById('planDropdown');
+            
+            let selectedPlanText = "";
+            if (planDropdown && planDropdown.selectedIndex > 0) {
+                selectedPlanText = planDropdown.options[planDropdown.selectedIndex]?.text || "";
+            }
+            
+            if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন'); return; }
+            if (!phone || phone.length < 10) { alert('সঠিক ফোন নম্বর দিন'); return; }
+            if (!address) { alert('অনুগ্রহ করে আপনার ঠিকানা দিন'); return; }
+            if (!duration && !selectedPlanText) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
+            if (!currentSelectedCourse) { alert('কোর্স তথ্য পাওয়া যায়নি'); return; }
+            
+            const btn = this;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
+            btn.disabled = true;
+            
+            const finalDuration = duration || selectedPlanText;
+            
+            const payload = {
+                name: name,
+                phone: phone,
+                address: address,
+                course: currentSelectedCourse.name,
+                duration: finalDuration,
+                message: message,
+                timestamp: new Date().toLocaleString('bn-BD')
+            };
+            
+            let allApplications = localStorage.getItem('palli_applications');
+            allApplications = allApplications ? JSON.parse(allApplications) : [];
+            allApplications.push(payload);
+            localStorage.setItem('palli_applications', JSON.stringify(allApplications));
+            
+            if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/YOUR_DEPLOYED_ID/exec") {
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(e => console.log("Submit error:", e));
+            }
+            
+            const modalFormWrap = document.getElementById('modalFormWrap');
+            if (modalFormWrap) modalFormWrap.style.display = 'none';
+            const modalSuccess = document.getElementById('modalSuccess');
+            if (modalSuccess) modalSuccess.style.display = 'block';
+        });
+        
+        document.getElementById('modalClose')?.addEventListener('click', closeModal);
+        document.getElementById('modalOverlay')?.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeModal(); });
+        document.getElementById('customCloseBtn')?.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (nav) {
+                if (window.scrollY > 20) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+        });
+        
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'palli_courses_live') loadCoursesFromStorage();
+            if (e.key === 'palli_site_settings') loadSiteSettings();
+        });
+        
+        loadSiteSettings();
+        loadCoursesFromStorage();
+    </script>
+</body>
+</html>
