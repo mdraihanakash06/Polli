@@ -40,7 +40,6 @@ function loadSiteSettings() {
 }
 
 function applySiteSettings() {
-    // লোগো ও নাম
     const logoIcon = document.getElementById('logoIcon');
     if (logoIcon) {
         logoIcon.innerHTML = siteSettings.logoIcon;
@@ -58,7 +57,6 @@ function applySiteSettings() {
     if (footerSiteNameEn) footerSiteNameEn.innerText = siteSettings.siteNameEn;
     document.title = `${siteSettings.siteNameBn} | মেডিকেল ট্রেনিং কোর্স`;
     
-    // হিরো সেকশন
     const heroBadge = document.getElementById('heroBadge');
     if (heroBadge) heroBadge.innerHTML = `<i class="fas fa-hospital-user"></i> ${siteSettings.heroBadge}`;
     const heroTitle = document.getElementById('heroTitle');
@@ -66,7 +64,6 @@ function applySiteSettings() {
     const heroDesc = document.getElementById('heroDesc');
     if (heroDesc) heroDesc.innerText = siteSettings.heroDesc;
     
-    // পরিসংখ্যান
     const statStudents = document.getElementById('statStudents');
     if (statStudents) statStudents.innerText = siteSettings.statStudents;
     const statCoursesCount = document.getElementById('statCoursesCount');
@@ -74,7 +71,6 @@ function applySiteSettings() {
     const statCertificate = document.getElementById('statCertificate');
     if (statCertificate) statCertificate.innerText = siteSettings.statCertificate;
     
-    // যোগাযোগ
     const contactPhone = document.getElementById('contactPhone');
     if (contactPhone) contactPhone.innerText = siteSettings.contactPhone;
     const contactEmail = document.getElementById('contactEmail');
@@ -82,12 +78,10 @@ function applySiteSettings() {
     const contactAddress = document.getElementById('contactAddress');
     if (contactAddress) contactAddress.innerText = siteSettings.contactAddress;
     
-    // কালার ভ্যারিয়েবল আপডেট
     document.documentElement.style.setProperty('--primary', siteSettings.primaryColor);
     document.documentElement.style.setProperty('--primary-dark', siteSettings.primaryColor);
     document.documentElement.style.setProperty('--secondary', siteSettings.secondaryColor);
     
-    // হিরো গ্রেডিয়েন্ট আপডেট
     const heroSection = document.getElementById('heroSection');
     if (heroSection) {
         heroSection.style.background = `linear-gradient(135deg, #064e3b 0%, #065f46 40%, ${siteSettings.primaryColor} 100%)`;
@@ -277,7 +271,7 @@ function openModal(index) {
     let planOptions = '';
     if (c.plans && c.plans.length > 0) {
         planOptions = c.plans.map((plan, idx) => 
-            `<option value="${idx}">${plan.duration} — ${plan.price}</option>`
+            `<option value="${idx}" data-price="${plan.price}">${plan.duration} — ${plan.price}</option>`
         ).join('');
     }
     
@@ -306,15 +300,12 @@ function openModal(index) {
         `;
     }
     
-    // ফর্ম ফিল্ড রিসেট
     const fName = document.getElementById('fName');
     if (fName) fName.value = '';
     const fPhone = document.getElementById('fPhone');
     if (fPhone) fPhone.value = '';
     const fAddress = document.getElementById('fAddress');
     if (fAddress) fAddress.value = '';
-    const fDuration = document.getElementById('fDuration');
-    if (fDuration) fDuration.value = '';
     const fMessage = document.getElementById('fMessage');
     if (fMessage) fMessage.value = '';
     
@@ -328,7 +319,6 @@ function openModal(index) {
         btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
     }
     
-    // প্ল্যান ড্রপডাউন ইভেন্ট
     setTimeout(() => {
         const planDropdown = document.getElementById('planDropdown');
         if (planDropdown) {
@@ -369,19 +359,21 @@ function submitForm() {
     const name = document.getElementById('fName')?.value.trim();
     const phone = document.getElementById('fPhone')?.value.trim();
     const address = document.getElementById('fAddress')?.value.trim();
-    const duration = document.getElementById('fDuration')?.value;
     const message = document.getElementById('fMessage')?.value.trim();
     const planDropdown = document.getElementById('planDropdown');
     
     let selectedPlanText = "";
+    let selectedPrice = "";
     if (planDropdown && planDropdown.selectedIndex > 0) {
         selectedPlanText = planDropdown.options[planDropdown.selectedIndex]?.text || "";
+        const selectedOption = planDropdown.options[planDropdown.selectedIndex];
+        selectedPrice = selectedOption?.getAttribute('data-price') || "";
     }
     
     if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন'); return; }
     if (!phone || phone.length < 10) { alert('সঠিক ফোন নম্বর দিন (01XXXXXXXXX)'); return; }
     if (!address) { alert('অনুগ্রহ করে আপনার ঠিকানা দিন'); return; }
-    if (!duration && !selectedPlanText) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
+    if (!selectedPlanText) { alert('অনুগ্রহ করে কোর্সের মেয়াদ নির্বাচন করুন'); return; }
     if (!currentSelectedCourse) { alert('কোর্স তথ্য পাওয়া যায়নি'); return; }
     
     const btn = document.getElementById('btnSubmit');
@@ -390,25 +382,22 @@ function submitForm() {
         btn.disabled = true;
     }
     
-    const finalDuration = duration || selectedPlanText;
-    
     const payload = {
         name: name,
         phone: phone,
         address: address,
         course: currentSelectedCourse.name,
-        duration: finalDuration,
+        duration: selectedPlanText,
+        price: selectedPrice,
         message: message,
         timestamp: new Date().toLocaleString('bn-BD')
     };
     
-    // লোকালস্টোরেজে সেভ
     let allApplications = localStorage.getItem('palli_applications');
     allApplications = allApplications ? JSON.parse(allApplications) : [];
     allApplications.push(payload);
     localStorage.setItem('palli_applications', JSON.stringify(allApplications));
     
-    // গুগল শীটে পাঠান
     if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/AKfycby_kO-bh6F0aCEnv1ObBBvIJzn-munFV7vpTl3fXz9VDzK5fQcPOVyRwxGecUHcfqxHOg/exec") {
         fetch(SCRIPT_URL, {
             method: 'POST',
@@ -433,11 +422,9 @@ function showSuccess() {
 
 // ==================== ইভেন্ট লিসেনার ====================
 document.addEventListener('DOMContentLoaded', function() {
-    // ফর্ম সাবমিট
     const btnSubmit = document.getElementById('btnSubmit');
     if (btnSubmit) btnSubmit.addEventListener('click', submitForm);
     
-    // মডাল ক্লোজ
     const modalClose = document.getElementById('modalClose');
     if (modalClose) modalClose.addEventListener('click', closeModal);
     
@@ -451,12 +438,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const customCloseBtn = document.getElementById('customCloseBtn');
     if (customCloseBtn) customCloseBtn.addEventListener('click', closeModal);
     
-    // Escape কী
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeModal();
     });
     
-    // নেভিগেশন স্ক্রল ইফেক্ট
     window.addEventListener('scroll', function() {
         const nav = document.getElementById('nav');
         if (nav) {
@@ -465,7 +450,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // স্টোরেজ সিঙ্ক
     window.addEventListener('storage', function(e) {
         if (e.key === 'palli_courses_live') {
             loadCoursesFromStorage();
@@ -475,17 +459,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // সাইট সেটিংস লোড
     loadSiteSettings();
-    
-    // কোর্স লোড
     loadCoursesFromStorage();
 });
+
 // ==================== অ্যাডমিন পাসওয়ার্ড সিস্টেম ====================
-const ADMIN_PASSWORD = "admin123"; // ডিফল্ট পাসওয়ার্ড
+const ADMIN_PASSWORD = "admin123";
 const PASSWORD_STORAGE_KEY = "palli_admin_password_saved";
 
-// পাসওয়ার্ড মডাল এলিমেন্ট
 const passwordModal = document.getElementById('passwordModal');
 const adminLoginBtn = document.getElementById('adminLoginBtn');
 const passwordSubmitBtn = document.getElementById('passwordSubmitBtn');
@@ -493,67 +474,60 @@ const passwordCancelBtn = document.getElementById('passwordCancelBtn');
 const adminPasswordInput = document.getElementById('adminPassword');
 const savePasswordCheckbox = document.getElementById('savePasswordCheckbox');
 
-// সেভ করা পাসওয়ার্ড চেক করা
 function checkSavedPassword() {
     const savedPassword = localStorage.getItem(PASSWORD_STORAGE_KEY);
     if (savedPassword === ADMIN_PASSWORD) {
-        // পাসওয়ার্ড ম্যাচ করলে সরাসরি অ্যাডমিন প্যানেলে নিয়ে যান
         window.location.href = "admin.html";
     }
 }
 
-// পাসওয়ার্ড ভেরিফাই করা
 function verifyPassword() {
     const enteredPassword = adminPasswordInput.value;
     if (enteredPassword === ADMIN_PASSWORD) {
-        if (savePasswordCheckbox.checked) {
+        if (savePasswordCheckbox && savePasswordCheckbox.checked) {
             localStorage.setItem(PASSWORD_STORAGE_KEY, ADMIN_PASSWORD);
         }
-        passwordModal.style.display = 'none';
+        if (passwordModal) passwordModal.style.display = 'none';
         window.location.href = "admin.html";
     } else {
         alert('❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।');
-        adminPasswordInput.value = '';
-        adminPasswordInput.focus();
+        if (adminPasswordInput) adminPasswordInput.value = '';
+        if (adminPasswordInput) adminPasswordInput.focus();
     }
 }
 
-// মডাল শো করা
 if (adminLoginBtn) {
-    adminLoginBtn.addEventListener('click', () => {
-        adminPasswordInput.value = '';
-        passwordModal.style.display = 'flex';
-        adminPasswordInput.focus();
+    adminLoginBtn.addEventListener('click', function() {
+        if (passwordModal) {
+            if (adminPasswordInput) adminPasswordInput.value = '';
+            passwordModal.style.display = 'flex';
+            if (adminPasswordInput) adminPasswordInput.focus();
+        }
     });
 }
 
-// সাবমিট বাটন
 if (passwordSubmitBtn) {
     passwordSubmitBtn.addEventListener('click', verifyPassword);
 }
 
-// এন্টার কী প্রেস করলে
 if (adminPasswordInput) {
-    adminPasswordInput.addEventListener('keypress', (e) => {
+    adminPasswordInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') verifyPassword();
     });
 }
 
-// ক্যান্সেল বাটন
 if (passwordCancelBtn) {
-    passwordCancelBtn.addEventListener('click', () => {
-        passwordModal.style.display = 'none';
+    passwordCancelBtn.addEventListener('click', function() {
+        if (passwordModal) passwordModal.style.display = 'none';
     });
 }
 
-// মডালের বাইরে ক্লিক করলে বন্ধ
 if (passwordModal) {
-    passwordModal.addEventListener('click', (e) => {
+    passwordModal.addEventListener('click', function(e) {
         if (e.target === passwordModal) {
             passwordModal.style.display = 'none';
         }
     });
 }
 
-// পেজ লোড হলে সেভ করা পাসওয়ার্ড চেক করুন
 checkSavedPassword();
