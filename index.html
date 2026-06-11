@@ -113,21 +113,6 @@
             align-items: center;
         }
 
-        .admin-link {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .admin-link:hover {
-            background: #e2e8f0;
-        }
-
         .nav-cta {
             background: var(--primary);
             color: #fff;
@@ -1047,46 +1032,44 @@
     </section>
 
     <footer class="footer">
-    <div class="container">
-        <div class="footer-logo">
-            <div class="logo-icon" style="background:rgba(255,255,255,0.15)" id="footerLogoIcon">✚</div>
-            <div>
-                <div class="logo-title" style="color:#fff" id="footerSiteName">পল্লী চিকিৎসা একাডেমি</div>
-                <div class="logo-sub" style="color:#94a3b8" id="footerSiteNameEn">Palli Chikitsa Academy</div>
+        <div class="container">
+            <div class="footer-logo">
+                <div class="logo-icon" style="background:rgba(255,255,255,0.15)" id="footerLogoIcon">✚</div>
+                <div>
+                    <div class="logo-title" style="color:#fff" id="footerSiteName">পল্লী চিকিৎসা একাডেমি</div>
+                    <div class="logo-sub" style="color:#94a3b8" id="footerSiteNameEn">Palli Chikitsa Academy</div>
+                </div>
             </div>
+            
+            <!-- অ্যাডমিন বাটন -->
+            <div style="margin: 20px 0;">
+                <button id="adminLoginBtn" style="background: #334155; color: white; border: none; padding: 10px 28px; border-radius: 40px; cursor: pointer; font-size: 14px;">
+                    <i class="fas fa-user-shield"></i> অ্যাডমিন প্যানেল
+                </button>
+            </div>
+            
+            <p class="footer-copy">© ২০২৬ This Website made by Raihan.</p>
         </div>
-        
-        <!-- ⭐ অ্যাডমিন বাটন (শুধু এখানেই থাকবে) ⭐ -->
-        <div style="margin: 20px 0;">
-            <button id="adminLoginBtn" style="background: #334155; color: white; border: none; padding: 10px 28px; border-radius: 40px; cursor: pointer; font-size: 14px;">
-                <i class="fas fa-user-shield"></i> Admin
-            </button>
+    </footer>
+
+    <!-- পাসওয়ার্ড মডাল -->
+    <div id="passwordModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999999; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 28px; padding: 32px; max-width: 380px; width: 90%; text-align: center;">
+            <i class="fas fa-lock" style="font-size: 48px; color: #059669; margin-bottom: 16px;"></i>
+            <h3 style="margin-bottom: 16px;">অ্যাডমিন অ্যাক্সেস</h3>
+            <input type="password" id="adminPassword" placeholder="পাসওয়ার্ড দিন" style="width: 100%; padding: 14px; border: 1.5px solid #e2e8f0; border-radius: 16px; margin-bottom: 16px; font-size: 16px;">
+            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                <button id="passwordSubmitBtn" style="flex:1; background: #059669; color: white; border: none; padding: 12px; border-radius: 40px; cursor: pointer;">প্রবেশ করুন</button>
+                <button id="passwordCancelBtn" style="flex:1; background: #e2e8f0; border: none; padding: 12px; border-radius: 40px; cursor: pointer;">বাতিল</button>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <input type="checkbox" id="savePasswordCheckbox" style="width: 18px; height: 18px;">
+                <label for="savePasswordCheckbox" style="font-size: 13px; color: #64748b;">পাসওয়ার্ড সেভ করুন</label>
+            </div>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 16px;">ডিফল্ট পাসওয়ার্ড: <strong>admin123</strong></p>
         </div>
-        
-        <p class="footer-copy">@ 2026 This Website made by Raihan।</p>
     </div>
-</footer> 
 
-
-    <!-- ⭐ পাসওয়ার্ড মডাল (ফুটারের পরে যোগ করুন) ⭐ -->
-<div id="passwordModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999999; align-items: center; justify-content: center;">
-    <div style="background: white; border-radius: 28px; padding: 32px; max-width: 380px; width: 90%; text-align: center;">
-        <i class="fas fa-lock" style="font-size: 48px; color: #059669; margin-bottom: 16px;"></i>
-        <h3 style="margin-bottom: 16px;">অ্যাডমিন অ্যাক্সেস</h3>
-        <input type="password" id="adminPassword" placeholder="পাসওয়ার্ড দিন" style="width: 100%; padding: 14px; border: 1.5px solid #e2e8f0; border-radius: 16px; margin-bottom: 16px; font-size: 16px;">
-        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-            <button id="passwordSubmitBtn" style="flex:1; background: #059669; color: white; border: none; padding: 12px; border-radius: 40px; cursor: pointer;">প্রবেশ করুন</button>
-            <button id="passwordCancelBtn" style="flex:1; background: #e2e8f0; border: none; padding: 12px; border-radius: 40px; cursor: pointer;">বাতিল</button>
-        </div>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <input type="checkbox" id="savePasswordCheckbox" style="width: 18px; height: 18px;">
-            <label for="savePasswordCheckbox" style="font-size: 13px; color: #64748b;">পাসওয়ার্ড সেভ করুন</label>
-        </div>
-        <p style="font-size: 12px; color: #94a3b8; margin-top: 16px;">ডিফল্ট পাসওয়ার্ড: <strong>admin123</strong></p>
-    </div>
-</div>
-
-    
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
@@ -1268,7 +1251,6 @@
             });
         }
 
-        // ==================== মডাল ফাংশন ====================
         function openModal(index) {
             currentSelectedCourse = courses[index];
             const c = currentSelectedCourse;
@@ -1298,24 +1280,15 @@
                 modalDetail.innerHTML = `<p class="md-desc">${c.desc}</p><div class="md-stats"><div class="md-stat"><label>মূল্য পরিসর</label><span>${c.priceRange}</span></div><div class="md-stat"><label>লেভেল</label><span>${c.level}</span></div><div class="md-stat"><label>আসন সংখ্যা</label><span>${c.seats}</span></div></div>${planSelectorHtml}<div class="md-topics">${topicsHtml}</div>`;
             }
             
-            const fName = document.getElementById('fName');
-            if (fName) fName.value = '';
-            const fPhone = document.getElementById('fPhone');
-            if (fPhone) fPhone.value = '';
-            const fAddress = document.getElementById('fAddress');
-            if (fAddress) fAddress.value = '';
-            const fMessage = document.getElementById('fMessage');
-            if (fMessage) fMessage.value = '';
+            document.getElementById('fName').value = '';
+            document.getElementById('fPhone').value = '';
+            document.getElementById('fAddress').value = '';
+            document.getElementById('fMessage').value = '';
             
-            const modalFormWrap = document.getElementById('modalFormWrap');
-            if (modalFormWrap) modalFormWrap.style.display = 'block';
-            const modalSuccess = document.getElementById('modalSuccess');
-            if (modalSuccess) modalSuccess.style.display = 'none';
-            const btnSubmit = document.getElementById('btnSubmit');
-            if (btnSubmit) {
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
-            }
+            document.getElementById('modalFormWrap').style.display = 'block';
+            document.getElementById('modalSuccess').style.display = 'none';
+            document.getElementById('btnSubmit').disabled = false;
+            document.getElementById('btnSubmit').innerHTML = '<i class="fas fa-paper-plane"></i> আবেদন জমা দিন';
             
             setTimeout(() => {
                 const planDropdown = document.getElementById('planDropdown');
@@ -1338,20 +1311,16 @@
                 }
             }, 50);
             
-            const modalOverlay = document.getElementById('modalOverlay');
-            if (modalOverlay) modalOverlay.classList.add('active');
+            document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
-            const modalBox = document.querySelector('.modal-box');
-            if (modalBox) modalBox.scrollTop = 0;
+            document.querySelector('.modal-box').scrollTop = 0;
         }
 
         function closeModal() {
-            const modalOverlay = document.getElementById('modalOverlay');
-            if (modalOverlay) modalOverlay.classList.remove('active');
+            document.getElementById('modalOverlay').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // ==================== ফর্ম সাবমিট ====================
         document.getElementById('btnSubmit')?.addEventListener('click', function() {
             const name = document.getElementById('fName')?.value.trim();
             const phone = document.getElementById('fPhone')?.value.trim();
@@ -1402,10 +1371,8 @@
                 }).catch(e => console.log("Submit error:", e));
             }
             
-            const modalFormWrap = document.getElementById('modalFormWrap');
-            if (modalFormWrap) modalFormWrap.style.display = 'none';
-            const modalSuccess = document.getElementById('modalSuccess');
-            if (modalSuccess) modalSuccess.style.display = 'block';
+            document.getElementById('modalFormWrap').style.display = 'none';
+            document.getElementById('modalSuccess').style.display = 'block';
         });
         
         document.getElementById('modalClose')?.addEventListener('click', closeModal);
@@ -1428,6 +1395,75 @@
         
         loadSiteSettings();
         loadCoursesFromStorage();
+
+        // ==================== অ্যাডমিন পাসওয়ার্ড সিস্টেম ====================
+        const ADMIN_PASSWORD = "admin123";
+        const PASSWORD_STORAGE_KEY = "palli_admin_password_saved";
+
+        const passwordModal = document.getElementById('passwordModal');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const passwordSubmitBtn = document.getElementById('passwordSubmitBtn');
+        const passwordCancelBtn = document.getElementById('passwordCancelBtn');
+        const adminPasswordInput = document.getElementById('adminPassword');
+        const savePasswordCheckbox = document.getElementById('savePasswordCheckbox');
+
+        function checkSavedPassword() {
+            const savedPassword = localStorage.getItem(PASSWORD_STORAGE_KEY);
+            if (savedPassword === ADMIN_PASSWORD) {
+                window.location.href = "admin.html";
+            }
+        }
+
+        function verifyPassword() {
+            const enteredPassword = adminPasswordInput.value;
+            if (enteredPassword === ADMIN_PASSWORD) {
+                if (savePasswordCheckbox && savePasswordCheckbox.checked) {
+                    localStorage.setItem(PASSWORD_STORAGE_KEY, ADMIN_PASSWORD);
+                }
+                passwordModal.style.display = 'none';
+                window.location.href = "admin.html";
+            } else {
+                alert('❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।');
+                if (adminPasswordInput) adminPasswordInput.value = '';
+                if (adminPasswordInput) adminPasswordInput.focus();
+            }
+        }
+
+        if (adminLoginBtn) {
+            adminLoginBtn.addEventListener('click', function() {
+                if (passwordModal) {
+                    if (adminPasswordInput) adminPasswordInput.value = '';
+                    passwordModal.style.display = 'flex';
+                    if (adminPasswordInput) adminPasswordInput.focus();
+                }
+            });
+        }
+
+        if (passwordSubmitBtn) {
+            passwordSubmitBtn.addEventListener('click', verifyPassword);
+        }
+
+        if (adminPasswordInput) {
+            adminPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') verifyPassword();
+            });
+        }
+
+        if (passwordCancelBtn) {
+            passwordCancelBtn.addEventListener('click', function() {
+                if (passwordModal) passwordModal.style.display = 'none';
+            });
+        }
+
+        if (passwordModal) {
+            passwordModal.addEventListener('click', function(e) {
+                if (e.target === passwordModal) {
+                    passwordModal.style.display = 'none';
+                }
+            });
+        }
+
+        checkSavedPassword();
     </script>
 </body>
 </html>
