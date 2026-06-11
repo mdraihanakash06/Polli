@@ -4,7 +4,7 @@
 // ============================================================
 
 // ==================== গুগল স্ক্রিপ্ট URL (আপনার ডিপ্লয় করা URL দিন) ====================
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_kO-bh6F0aCEnv1ObBBvIJzn-munFV7vpTl3fXz9VDzK5fQcPOVyRwxGecUHcfqxHOg/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx53lVK96J5LeF2oEyeb7MVz6nsCJX32HKgBae9xlgW_gSGtdTELJ9iiFZxxmciJorv/exec";
 
 // ==================== সাইট সেটিংস লোড ====================
 let siteSettings = {
@@ -398,7 +398,7 @@ function submitForm() {
     allApplications.push(payload);
     localStorage.setItem('palli_applications', JSON.stringify(allApplications));
     
-    if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/AKfycby_kO-bh6F0aCEnv1ObBBvIJzn-munFV7vpTl3fXz9VDzK5fQcPOVyRwxGecUHcfqxHOg/exec") {
+    if (SCRIPT_URL && SCRIPT_URL !== "" && SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbx53lVK96J5LeF2oEyeb7MVz6nsCJX32HKgBae9xlgW_gSGtdTELJ9iiFZxxmciJorv/exec") {
         fetch(SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
