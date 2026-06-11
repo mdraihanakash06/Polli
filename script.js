@@ -481,3 +481,79 @@ document.addEventListener('DOMContentLoaded', function() {
     // কোর্স লোড
     loadCoursesFromStorage();
 });
+// ==================== অ্যাডমিন পাসওয়ার্ড সিস্টেম ====================
+const ADMIN_PASSWORD = "admin123"; // ডিফল্ট পাসওয়ার্ড
+const PASSWORD_STORAGE_KEY = "palli_admin_password_saved";
+
+// পাসওয়ার্ড মডাল এলিমেন্ট
+const passwordModal = document.getElementById('passwordModal');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const passwordSubmitBtn = document.getElementById('passwordSubmitBtn');
+const passwordCancelBtn = document.getElementById('passwordCancelBtn');
+const adminPasswordInput = document.getElementById('adminPassword');
+const savePasswordCheckbox = document.getElementById('savePasswordCheckbox');
+
+// সেভ করা পাসওয়ার্ড চেক করা
+function checkSavedPassword() {
+    const savedPassword = localStorage.getItem(PASSWORD_STORAGE_KEY);
+    if (savedPassword === ADMIN_PASSWORD) {
+        // পাসওয়ার্ড ম্যাচ করলে সরাসরি অ্যাডমিন প্যানেলে নিয়ে যান
+        window.location.href = "admin.html";
+    }
+}
+
+// পাসওয়ার্ড ভেরিফাই করা
+function verifyPassword() {
+    const enteredPassword = adminPasswordInput.value;
+    if (enteredPassword === ADMIN_PASSWORD) {
+        if (savePasswordCheckbox.checked) {
+            localStorage.setItem(PASSWORD_STORAGE_KEY, ADMIN_PASSWORD);
+        }
+        passwordModal.style.display = 'none';
+        window.location.href = "admin.html";
+    } else {
+        alert('❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।');
+        adminPasswordInput.value = '';
+        adminPasswordInput.focus();
+    }
+}
+
+// মডাল শো করা
+if (adminLoginBtn) {
+    adminLoginBtn.addEventListener('click', () => {
+        adminPasswordInput.value = '';
+        passwordModal.style.display = 'flex';
+        adminPasswordInput.focus();
+    });
+}
+
+// সাবমিট বাটন
+if (passwordSubmitBtn) {
+    passwordSubmitBtn.addEventListener('click', verifyPassword);
+}
+
+// এন্টার কী প্রেস করলে
+if (adminPasswordInput) {
+    adminPasswordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyPassword();
+    });
+}
+
+// ক্যান্সেল বাটন
+if (passwordCancelBtn) {
+    passwordCancelBtn.addEventListener('click', () => {
+        passwordModal.style.display = 'none';
+    });
+}
+
+// মডালের বাইরে ক্লিক করলে বন্ধ
+if (passwordModal) {
+    passwordModal.addEventListener('click', (e) => {
+        if (e.target === passwordModal) {
+            passwordModal.style.display = 'none';
+        }
+    });
+}
+
+// পেজ লোড হলে সেভ করা পাসওয়ার্ড চেক করুন
+checkSavedPassword();
