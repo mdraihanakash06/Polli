@@ -530,4 +530,7 @@ if (passwordModal) {
     });
 }
 
-checkSavedPassword();
+// পেজ লোড হলে সেভ করা পাসওয়ার্ড চেক করুন (শুধুমাত্র পাবলিক সাইটে)
+if (window.location.pathname.includes("index.html") || window.location.pathname === "/" || window.location.pathname === "") {
+    checkSavedPassword();
+}
